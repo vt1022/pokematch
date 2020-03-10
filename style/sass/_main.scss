@@ -1,0 +1,22 @@
+.main {
+  
+  &__cards-container{
+    @include flexCenter();
+    flex-wrap: wrap;
+    align-content: center;
+
+    padding: 40px;
+    background: #3b3b3b;
+
+    &__card {
+      flex: 0 1 $squareCardSize;
+      height: $squareCardSize;
+      border: 1px solid #000;
+
+      &__image {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}

@@ -9,3 +9,13 @@ ul, ol, li {
   margin: 0;
   list-style: none;
 }
+
+a, p {
+  @include fontSize(36);
+}
+
+.wrapper {
+  max-width: calc( #{$squareCardSize} * 4 + 80px );
+  width: 80%;
+  margin: 0 auto;
+}
