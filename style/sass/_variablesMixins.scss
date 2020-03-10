@@ -1,0 +1,68 @@
+// variables
+
+// font colours + pseudo states
+$primary-black: #2e2e2e;
+$secondary-black: #333333;
+$primary-white: #f6f6f6;
+$secondary-white: #ccc;
+$primary-accent: #64a604;
+$secondary-accent: #DC1570;
+
+// background colours
+$primary-bg: #f6f6f6;
+$secondary-bg: $secondary-white;
+$accent-bg: #dded9a;
+
+// mixins
+
+// vertical + horizontal centering w/ flexbox
+@mixin flexCenter() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// fonts
+@mixin fontSize($sizeValue){
+  // font sizes turn into rem values
+  font-size: $sizeValue * 1px;
+  font-size: ($sizeValue/10) * 1rem;
+}
+
+@mixin fontSans($size, $weight: 700, $color: $primary-black) {
+  @include fontSize($size);
+  font-family: 'Raleway', sans-serif;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin fontSerif($size, $weight: 400, $color: $primary-black) {
+  @include fontSize($size);
+  font-family: 'Lora', serif;
+  font-weight: $weight;
+  color: $color;
+}
+
+@mixin focusState() {
+    outline: 3px dotted $secondary-accent;
+}
+
+// might be useful
+@mixin position($type, $top: auto, $bottom: auto, $left: auto, $right: auto) {
+  position: $type;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+}
+
+@mixin overlay($color: #000000, $alpha: 0.7) {
+  position: absolute;
+  display: block;
+  content: '';
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba($color, $alpha);
+}
