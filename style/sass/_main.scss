@@ -9,9 +9,19 @@
     background: #3b3b3b;
 
     &__card {
+      position: relative;
       flex: 0 1 $squareCardSize;
       height: $squareCardSize;
       border: 1px solid #000;
+
+      &__overlay {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        opacity: 90%;
+        transition: all .3s ease;
+      }
 
       &__image {
         height: 100%;
