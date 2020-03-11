@@ -13,30 +13,26 @@ memApp.randomize = function(maxNumber) {
 // write function to populate cards with for loop
 // append html of cards to container
 memApp.populateCards = function() {
-  for ( let i = 1; i <= 8; i++) {
+  for ( let n = 1; n <= 8; n++) {
     const pokemon = memApp.pokemonApi(memApp.randomize(151));
 
-    pokemon.then(function(result) {
-      const pokemonName = result.name;
-      const pokemonImageUrl = result.sprites.front_default;
+    for ( let i = 1; i <=2; i++ ) {
 
-      let htmlToAppend = `
-      <div class="main__cards-container__card card">
-        <div class="main__cards-container__card__overlay"></div>
-        <img src="${pokemonImageUrl}" alt="${pokemonName}" class="main__cards-container__card__image">
-      </div>`;
+      pokemon.then(function(result) {
+        const pokemonName = result.name;
+        const pokemonImageUrl = result.sprites.front_default;
   
-      $(".main__cards-container").append(htmlToAppend);
-    });
+        let htmlToAppend = `
+        <div class="main__cards-container__card card${n}">
+          <div class="main__cards-container__card__overlay"></div>
+          <img src="${pokemonImageUrl}" alt="${pokemonName}" class="main__cards-container__card__image">
+        </div>`;
+  
+        $(".main__cards-container").append(htmlToAppend);
+      });
+    }
+    
   }
-}
-// -----------------
-// copy the 8 cards
-// -----------------
-// copy the cards that were made before
-memApp.copyTheCards = function() {
-  const copiedCards = $(".main__cards-container__card").clone();
-  $(".main__cards-container").append(copiedCards);
 }
 // -----------------
 // pokemon api
@@ -56,10 +52,6 @@ memApp.pokemonApi = function(pokeId) {
 // -----------------
 memApp.init = function() {
   memApp.populateCards();
-
-  setTimeout(function() {
-    memApp.copyTheCards();
-  }, 300);
 }
 // -----------------
 // doc ready
