@@ -10,6 +10,13 @@ ul, ol, li {
   list-style: none;
 }
 
+button {
+  padding: 0;
+  border: none;
+  margin: 0;
+  background: none;
+}
+
 a, p {
   @include fontSize(36);
 }

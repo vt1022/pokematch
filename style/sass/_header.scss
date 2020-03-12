@@ -1,3 +1,52 @@
 .header {
   position: absolute;
+  height: 100%;
+  width: 40px;
+  padding: 2% 0;
+  border: 1px solid red;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    
+    transform: translateX(50%);
+
+    &::after {
+      content: '';
+      position: absolute;
+
+    }
+  }
+
+  &__list__item__reset__arrow {
+    position: relative;
+    height: 40px;
+    width: 40px;
+
+    border: 3px solid transparent;
+    border-top-color: black;
+    border-left-color: black;
+    border-bottom-color: black;
+    border-radius: 50%;
+
+    transform: rotate(35deg);
+
+    &:before {
+      content: "";
+      position: absolute;
+      height: 0;
+      width: 0;
+      top: 0px;
+      left: 80%;
+      
+      border-left: 10px solid black;
+      border-top: 5px solid transparent;
+      border-bottom: 10px solid transparent;
+      
+      transform: rotate(45deg);
+    }
+  }
+
 }

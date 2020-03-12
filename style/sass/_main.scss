@@ -1,5 +1,7 @@
 .main {
-  
+  @include flexCenter();
+  height: 100vh;
+
   &__cards-container{
     @include flexCenter();
     flex-wrap: wrap;
