@@ -1,6 +1,8 @@
 const memApp = {}; // namespace
 
 memApp.amountOfCards = 20; // could add difficulty button to change this
+// memApp.amountOfCards = 16; 
+// memApp.amountOfCards = 36; 
 // -----------------
 // randomize number
 // -----------------
@@ -26,8 +28,9 @@ memApp.populateCards = function() {
   
         let htmlToAppend = `
         <div class="main__cards-container__card">
-          <div class="main__cards-container__card__overlay"></div>
-          <img src="${pokemonImageUrl}" alt="${pokemonName}" class="main__cards-container__card__image">
+        <button class="main__cards-container__card__overlay" aria-label="${pokemonName}">
+        </button>
+        <img src="${pokemonImageUrl}" alt="${pokemonName}" class="main__cards-container__card__image">
         </div>`;
   
         $(".main__cards-container").append(htmlToAppend);
@@ -48,7 +51,7 @@ memApp.randomizeCardOrder = function() {
       $(`.main__cards-container__card:nth-of-type(${i})`).addClass(`card${i}`);
       $(`.card${i}`).css("order", `${randomOrder}`);
     }
-  }, 300);
+  }, 700);
 }
 // -----------------
 // click on cards

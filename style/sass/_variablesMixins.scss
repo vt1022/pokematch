@@ -1,19 +1,19 @@
 // variables
 
-$squareCardSize: 200px;
+$squareCardSize: 150px;
 
 // font colours + pseudo states
-$primary-black: #2e2e2e;
-$secondary-black: #333333;
-$primary-white: #f6f6f6;
-$secondary-white: #ccc;
-$primary-accent: #64a604;
-$secondary-accent: #DC1570;
+$primaryBlack: #2e2e2e;
+$secondaryBlack: #333333;
+$primaryWhite: #f6f6f6;
+$secondaryWhite: #ccc;
+$primaryColor: #64a604;
+$secondaryColor: #DC1570;
 
 // background colours
-$primary-bg: #f6f6f6;
-$secondary-bg: $secondary-white;
-$accent-bg: #dded9a;
+$primaryBg: #f6f6f6;
+$secondaryBg: $secondaryWhite;
+$accentBg: #dded9a;
 
 // mixins
 
@@ -31,14 +31,14 @@ $accent-bg: #dded9a;
   font-size: ($sizeValue/10) * 1rem;
 }
 
-@mixin fontSans($size, $weight: 700, $color: $primary-black) {
+@mixin fontSans($size, $weight: 700, $color: $primaryBlack) {
   @include fontSize($size);
   font-family: 'Raleway', sans-serif;
   font-weight: $weight;
   color: $color;
 }
 
-@mixin fontSerif($size, $weight: 400, $color: $primary-black) {
+@mixin fontSerif($size, $weight: 400, $color: $primaryBlack) {
   @include fontSize($size);
   font-family: 'Lora', serif;
   font-weight: $weight;
@@ -46,7 +46,7 @@ $accent-bg: #dded9a;
 }
 
 @mixin focusState() {
-    outline: 3px dotted $secondary-accent;
+    outline: 6px dotted $secondaryColor;
 }
 
 // might be useful
