@@ -2,13 +2,11 @@
   $squareCardSize: 120px;
 
   .wrapper {
-    max-width: calc( #{$squareCardSize} * 4 + 125px );
+    max-width: calc( #{$squareCardSize} * 4 + 80px );
     width: 90%;
   } 
 
   .main {
-    padding-left: 45px;
-
     &__cards-container__card {
       flex: 0 1 $squareCardSize;
       height: $squareCardSize;
@@ -43,17 +41,21 @@
 }
 
 @media (max-width: 585px) {
-  $squareCardSize: 90px;
+  $squareCardSize: 85px;
   
   .wrapper {
-    max-width: calc( #{$squareCardSize} * 3 + 40px );
+    max-width: calc( #{$squareCardSize} * 3 + 20px );
     width: 99%;
   }
   
   .main {
-    &__cards-container__card {
-      flex: 0 1 $squareCardSize;
-      height: $squareCardSize;
+    &__cards-container {
+      padding: 10px;
+
+      &__card {
+        flex: 0 1 $squareCardSize;
+        height: $squareCardSize;
+      }
     }
   }
 }
