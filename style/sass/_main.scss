@@ -6,25 +6,25 @@
     @include flexCenter();
     flex-wrap: wrap;
 
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 40px;
-    background: lighten($primaryBlack, 20%);
+    background: lighten($primaryBlack, 30%);
 
     &__card {
       position: relative;
       flex: 0 1 $squareCardSize;
       height: $squareCardSize;
-      border: 1px solid #000;
+      border: 1px solid $secondaryBlack;
 
       &__overlay {
         position: absolute;
         width: 100%;
         height: 100%;
-        background: #fff;
-        opacity: 90%;
+        background: lighten($primaryBlack, 70%);
+        // opacity: 90%;
         transition: all .3s ease;
 
-        &:focus {background: red;}
+        &:focus {background: $primaryColor;}
       }
 
       &__image {

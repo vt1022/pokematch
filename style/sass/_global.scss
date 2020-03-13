@@ -1,7 +1,7 @@
 ::selection { color: turquoise; }
 :focus {@include focusState();}
 html {scroll-behavior: smooth;}
-body {background: $primaryWhite;}
+body {background: linear-gradient(-80deg, $primaryBlack 0%, $primaryBlack 80%, $primaryColor 80%, $primaryColor 100%);}
 img {display: block;}
 
 ul, ol, li {
