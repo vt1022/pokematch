@@ -326,7 +326,7 @@ a, p {
   left: 0;
   z-index: -1;
   width: 30px;
-  height: 100%;
+  height: calc( 100% - 60px);
   border-right: 0;
   border-right: 3px solid #2e2e2e;
 }
@@ -378,9 +378,9 @@ a, p {
   width: 0;
   top: 0px;
   left: 80%;
-  border-left: 10px solid black;
-  border-top: 5px solid transparent;
-  border-bottom: 10px solid transparent;
+  border-left: 15px solid black;
+  border-top: 10px solid transparent;
+  border-bottom: 15px solid transparent;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   -webkit-transition: all .4s ease-in-out;
@@ -410,7 +410,7 @@ a, p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100vh;
+  height: calc( 100vh - 70px);
 }
 
 .main__cards-container {
@@ -476,10 +476,6 @@ a, p {
 @media (max-width: 695px) {
   .wrapper {
     max-width: calc( 100px * 4 + 40px);
-  }
-  .main {
-    height: calc( 100vh - 50px);
-    padding-left: 0px;
   }
   .main__cards-container {
     padding: 20px;

@@ -12,7 +12,7 @@
     left: 0;
     z-index: -1;
     width: 30px;
-    height: 100%;
+    height: calc( 100% - 60px );
     border-right: 0;
     border-right: 3px solid $primaryBlack;
   }
@@ -54,9 +54,9 @@
       top: 0px;
       left: 80%;
       
-      border-left: 10px solid black;
-      border-top: 5px solid transparent;
-      border-bottom: 10px solid transparent;
+      border-left: 15px solid black;
+      border-top: 10px solid transparent;
+      border-bottom: 15px solid transparent;
       
       transform: rotate(45deg);
       transition: all .4s ease-in-out;
