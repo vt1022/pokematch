@@ -281,6 +281,7 @@ html {
 
 body {
   background: linear-gradient(-80deg, #2e2e2e 0%, #2e2e2e 80%, #DC0A2D 80%, #DC0A2D 100%);
+  background-repeat: no-repeat;
 }
 
 img {

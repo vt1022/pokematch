@@ -45,6 +45,7 @@ memApp.populateCards = function() {
 // add class to each card
 // add random order to each card
 memApp.randomizeCardOrder = function() {
+  // FIX THIS FOR ACCESS. google tab index
   setTimeout(() => {
     for ( let i = 1; i <= memApp.amountOfCards; i++ ) {
       const randomOrder = memApp.randomize(100);
@@ -73,11 +74,9 @@ memApp.cardIsClicked = function() {
     // every even click, compare clickedPokeName[current] vs [previous] and do some shit
     if ( (clicksInContainer + 1) % 2 === 0 ) {
       if (clickedPokeName[clicksInContainer] === clickedPokeName[accessPrevious]) {
-        console.log("they match!");
+        // console.log("they match!");
 
       } else if (clickedPokeName[clicksInContainer] != clickedPokeName[accessPrevious]) {
-        console.log("they dont match!");
-
         setTimeout(() => {
           $(this).css("width", "100%").css("height", "100%");
           $(clickedCard[accessPrevious]).css("width", "100%").css("height", "100%");
@@ -103,9 +102,46 @@ memApp.pokemonApi = function(pokeId) {
   return pokePromise;
 }
 // -----------------
+// count down timer
+// -----------------
+// memApp.countDown = function(maxTimeInSeconds) {
+//   $(".header__list__item__timer").each(function () {
+//     let timerCount = parseInt(maxTimeInSeconds);
+//     if (timerCount !== 0) {
+//       $(this).html(timerCount - 1);
+//       console.log(timerCount);
+      
+//     }
+//   });
+// }
+// -----------------
 // init
 // -----------------
 memApp.init = function() {
+  $(".header__list__item__reset").on("click", function(e) {
+    e.preventDefault();
+    let timerCount = parseInt(5);
+
+    $(".header__list__item__timer").html(timerCount);
+
+    setInterval(function () {
+      timerCount--;
+
+      if (timerCount >= 1) {
+        $(".header__list__item__timer").html(timerCount);
+        console.log(timerCount);
+      } else if (timerCount <= 0) {
+        $(".header__list__item__timer").html("0");
+      } else {
+        $(".header__list__item__timer").html("safi, please stop breaking my shit");
+        console.log("safi, please stop breaking my shit");
+      }
+      console.log(timerCount);
+      
+
+    }, 1000);
+  });
+
   memApp.populateCards();
   memApp.cardIsClicked();
 }
