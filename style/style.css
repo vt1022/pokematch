@@ -272,7 +272,7 @@ html {
 }
 
 :focus {
-  outline: 6px dotted #DC1570;
+  outline: 6px dotted #f6f6f6;
 }
 
 html {

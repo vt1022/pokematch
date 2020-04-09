@@ -46,7 +46,7 @@ $accentBg: #dded9a;
 }
 
 @mixin focusState() {
-    outline: 6px dotted $secondaryColor;
+    outline: 6px dotted $primaryWhite;
 }
 
 // might be useful

@@ -104,42 +104,32 @@ memApp.pokemonApi = function(pokeId) {
 // -----------------
 // count down timer
 // -----------------
-// memApp.countDown = function(maxTimeInSeconds) {
-//   $(".header__list__item__timer").each(function () {
-//     let timerCount = parseInt(maxTimeInSeconds);
-//     if (timerCount !== 0) {
-//       $(this).html(timerCount - 1);
-//       console.log(timerCount);
-      
-//     }
-//   });
-// }
+memApp.timer = function(timerStartsAt) {
+  // a variable for adapting for adding feature later
+  let timerCount = parseInt(timerStartsAt); 
+  $(".header__list__item__timer").html(timerCount);
+
+  const timer = setInterval(function() {
+    timerCount--;
+
+    if (timerCount >= 0) {
+      $(".header__list__item__timer").html(timerCount);
+    } else if (timerCount < 0) {
+      clearInterval(timer);
+    } else {
+      console.log("safi, please stop breaking my shit");
+      clearInterval(timer);
+    }
+    
+  }, 1000);
+}
 // -----------------
 // init
 // -----------------
 memApp.init = function() {
   $(".header__list__item__reset").on("click", function(e) {
     e.preventDefault();
-    let timerCount = parseInt(5);
-
-    $(".header__list__item__timer").html(timerCount);
-
-    setInterval(function () {
-      timerCount--;
-
-      if (timerCount >= 1) {
-        $(".header__list__item__timer").html(timerCount);
-        console.log(timerCount);
-      } else if (timerCount <= 0) {
-        $(".header__list__item__timer").html("0");
-      } else {
-        $(".header__list__item__timer").html("safi, please stop breaking my shit");
-        console.log("safi, please stop breaking my shit");
-      }
-      console.log(timerCount);
-      
-
-    }, 1000);
+    memApp.timer(5);
   });
 
   memApp.populateCards();
