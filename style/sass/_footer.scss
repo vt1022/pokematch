@@ -8,12 +8,28 @@
 
 
   &__landing {
-    @include flexCenter();
-    flex-direction: column;
-
     width: 100%;
     height: 100%;
     background: rgba(12, 10, 10, 0.98);
+
+    .wrapper {
+      @include flexCenter();
+      flex-direction: column;
+    }
+
+    &__logo {
+      margin-top: 20%;
+      margin-bottom: 25px;
+    }
+
+    &__welcome {
+      @include fontSans(12, 400, $secondaryBlack);
+      padding: 0px 30px;
+      // background: $primaryWhite;
+      background: url(../assets/pokemonBorder.png);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
 
     button {
       @include fontDisplay(16, 400, $accentColor);
