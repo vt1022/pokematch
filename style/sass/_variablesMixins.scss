@@ -8,12 +8,12 @@ $secondaryBlack: #0c0a0a;
 $primaryWhite: #f6f6f6;
 $secondaryWhite: #ccc;
 $primaryColor: #DC0A2D;
-$secondaryColor: #DC1570;
+$secondaryColor: #FFCB08;
+$accentColor: #004894;
 
 // background colours
 $primaryBg: #f6f6f6;
 $secondaryBg: $secondaryWhite;
-$accentBg: #dded9a;
 
 // mixins
 
@@ -31,16 +31,16 @@ $accentBg: #dded9a;
   font-size: ($sizeValue/10) * 1rem;
 }
 
-@mixin fontSans($size, $weight: 700, $color: $primaryBlack) {
+@mixin fontSans($size, $weight: 400, $color: $primaryBlack) {
   @include fontSize($size);
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Lexend Giga', sans-serif;
   font-weight: $weight;
   color: $color;
 }
 
-@mixin fontSerif($size, $weight: 400, $color: $primaryBlack) {
+@mixin fontDisplay($size, $weight: 400, $color: $primaryBlack) {
   @include fontSize($size);
-  font-family: 'Lora', serif;
+  font-family: 'Sigmar One', cursive;
   font-weight: $weight;
   color: $color;
 }

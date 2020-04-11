@@ -477,13 +477,26 @@ a, p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
   height: 100%;
   background: rgba(12, 10, 10, 0.98);
 }
 
 .footer__landing button {
-  color: #fff;
+  font-size: 16px;
+  font-size: 1.6rem;
+  font-family: 'Sigmar One', cursive;
+  font-weight: 400;
+  color: #004894;
+  padding: 6px 10px;
+  border: 3px solid #004894;
+  background: #FFCB08;
+  -webkit-box-shadow: -3px 5px 0px #94c8ff;
+          box-shadow: -3px 5px 0px #94c8ff;
 }
 
 @media (max-width: 870px) {
