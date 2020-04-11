@@ -4,7 +4,7 @@ $squareCardSize: 150px;
 
 // font colours + pseudo states
 $primaryBlack: #2e2e2e;
-$secondaryBlack: #333333;
+$secondaryBlack: #0c0a0a;
 $primaryWhite: #f6f6f6;
 $secondaryWhite: #ccc;
 $primaryColor: #DC0A2D;
@@ -46,7 +46,7 @@ $accentBg: #dded9a;
 }
 
 @mixin focusState() {
-    outline: 6px dotted $primaryWhite;
+  outline: 3px dotted $primaryWhite;
 }
 
 // might be useful

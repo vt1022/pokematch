@@ -272,7 +272,7 @@ html {
 }
 
 :focus {
-  outline: 6px dotted #f6f6f6;
+  outline: 3px dotted #f6f6f6;
 }
 
 html {
@@ -437,7 +437,7 @@ a, p {
       -ms-flex: 0 1 150px;
           flex: 0 1 150px;
   height: 150px;
-  border: 1px solid #333333;
+  border: 1px solid #0c0a0a;
 }
 
 .main__cards-container__card__overlay {
@@ -456,6 +456,34 @@ a, p {
 .main__cards-container__card__image {
   height: 100%;
   width: 100%;
+}
+
+.footer {
+  background: url(../assets/pokeballs.jpg);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer__landing {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+  background: rgba(12, 10, 10, 0.98);
+}
+
+.footer__landing button {
+  color: #fff;
 }
 
 @media (max-width: 870px) {

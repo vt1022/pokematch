@@ -18,6 +18,7 @@ memApp.randomize = function(maxNumber) {
 // append html of cards to container
 memApp.populateCards = function() {
   $(".main__cards-container").empty();
+  // $(".footer").hide();
   for ( let n = 1; n <= memApp.amountOfCards / 2; n++ ) {
     const pokemon = memApp.pokemonApi(memApp.randomize(151));
 
@@ -60,8 +61,8 @@ memApp.randomizeCardOrder = function() {
 // event handler on container, then target card overlay
 memApp.cardIsClicked = function() {
   let clicksInContainer = -1;
-  let clickedPokeName = [];
-  let clickedCard = [];
+  const clickedPokeName = [];
+  const clickedCard = [];
   
   $(".main__cards-container").on("click", ".main__cards-container__card__overlay", function() {
     clicksInContainer++;
@@ -74,7 +75,7 @@ memApp.cardIsClicked = function() {
     // every even click, compare clickedPokeName[current] vs [previous] and do some shit
     if ( (clicksInContainer + 1) % 2 === 0 ) {
       if (clickedPokeName[clicksInContainer] === clickedPokeName[accessPrevious]) {
-        // console.log("they match!");
+        // if cards match, then:
 
       } else if (clickedPokeName[clicksInContainer] != clickedPokeName[accessPrevious]) {
         setTimeout(() => {
@@ -105,20 +106,21 @@ memApp.pokemonApi = function(pokeId) {
 // count down timer
 // -----------------
 memApp.timer = function(timerStartsAt) {
-  // a variable for adapting for adding feature later
+  // timerCount as variable to add difficulty feature later
   let timerCount = parseInt(timerStartsAt); 
   $(".header__list__item__timer").html(timerCount);
 
   const timer = setInterval(function() {
     timerCount--;
 
-    if (timerCount >= 0) {
+    if (timerCount > 0) {
       $(".header__list__item__timer").html(timerCount);
-    } else if (timerCount < 0) {
+    } else if (timerCount <= 0) {
       clearInterval(timer);
+      $(".footer").show();
     } else {
-      console.log("safi, please stop breaking my shit");
       clearInterval(timer);
+      console.log("safi, please stop breaking my shit");
     }
     
   }, 1000);
@@ -127,13 +129,15 @@ memApp.timer = function(timerStartsAt) {
 // init
 // -----------------
 memApp.init = function() {
-  $(".header__list__item__reset").on("click", function(e) {
-    e.preventDefault();
-    memApp.timer(5);
-  });
-
   memApp.populateCards();
   memApp.cardIsClicked();
+
+  $(".header__list__item__reset").on("click", function(e) {
+    e.preventDefault();
+    // time to complete game
+    memApp.populateCards();
+    memApp.timer(5);
+  });
 }
 // -----------------
 // doc ready
