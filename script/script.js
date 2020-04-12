@@ -77,7 +77,7 @@ memApp.cardIsClicked = function() {
         // if won:
         const wonHtml = `
         You WON! You managed to MATCH all the Pokémon! CLICK start to test your SKILLS again!
-        <button class="footer__landing__welcome__button">START <span>&#9660</span></button>`;
+        <button class="footer__landing__welcome__button"><span>&#9654</span>START</button>`;
         
         $(".footer__landing__welcome p").html(wonHtml);
         $(".footer").show();
@@ -117,6 +117,7 @@ memApp.pokemonApi = function(pokeId) {
 // -----------------
 // count down timer
 // -----------------
+
 memApp.timer = function(timerStartsAt) {
   // timerCount as variable to add difficulty feature later
   let timerCount = parseInt(timerStartsAt); 
@@ -132,7 +133,7 @@ memApp.timer = function(timerStartsAt) {
       
       const lostHtml = `
       You ran OUT of TIME! Better luck NEXT time. CLICK start to try again!
-      <button class="footer__landing__welcome__button">START <span>&#9660</span></button>`;
+      <button class="footer__landing__welcome__button"><span>&#9654</span>START</button>`;
       
       $(".footer__landing__welcome p").html(lostHtml);
       $(".footer").show();

@@ -579,12 +579,35 @@ a, p {
   position: absolute;
   bottom: 0;
   right: 3px;
-  -webkit-filter: drop-shadow(1px 1px 0 #0c0a0a);
-          filter: drop-shadow(1px 1px 0 #0c0a0a);
 }
 
 .footer__landing__welcome p button span {
   color: #0c0a0a;
+  display: inline-block;
+  -webkit-animation: blinkingArrow .5s ease-in infinite alternate;
+          animation: blinkingArrow .5s ease-in infinite alternate;
+}
+
+@-webkit-keyframes blinkingArrow {
+  0% {
+    -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
+}
+
+@keyframes blinkingArrow {
+  0% {
+    -webkit-transform: translateX(-2px);
+            transform: translateX(-2px);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+  }
 }
 
 @media (max-width: 870px) {

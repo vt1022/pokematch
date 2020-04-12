@@ -98,12 +98,25 @@
           position: absolute;
           bottom: 0;
           right: 3px;
-          filter: drop-shadow(1px 1px 0 $secondaryBlack);
 
-          span {color: $secondaryBlack;}
+          span {
+            color: $secondaryBlack;
+            display: inline-block;
+            animation: blinkingArrow .5s ease-in infinite alternate;
+          }
+
         }
       }
     
     }
+  }
+}
+
+@keyframes blinkingArrow {
+  0% {
+    transform: translateX(-2px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
