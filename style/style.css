@@ -277,11 +277,11 @@ html {
 
 html {
   scroll-behavior: smooth;
+  background: url(../assets/pokeballs.jpg);
 }
 
 body {
-  background: linear-gradient(-80deg, #2e2e2e 0%, #2e2e2e 80%, #DC0A2D 80%, #DC0A2D 100%);
-  background-repeat: no-repeat;
+  background: rgba(12, 10, 10, 0.9);
 }
 
 img {
@@ -312,24 +312,31 @@ a, p {
   margin: 0 auto;
 }
 
+.wrapperFooter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  max-width: 1200px;
+  width: 80%;
+  margin: 0 auto;
+}
+
 .header {
   position: static;
   width: 100%;
   height: 60px;
   padding: 10px 20px 0 20px;
   margin-bottom: 10px;
-}
-
-.header::after {
-  content: '';
-  position: absolute;
-  top: 60px;
-  left: 0;
-  z-index: -1;
-  width: 30px;
-  height: calc( 100% - 60px);
-  border-right: 0;
-  border-right: 3px solid #2e2e2e;
 }
 
 .header__list {
@@ -353,7 +360,14 @@ a, p {
 }
 
 .header__list__item__timer {
+  font-size: 34px;
+  font-size: 3.4rem;
+  font-family: 'Lexend Giga', sans-serif;
+  font-weight: 400;
+  color: #DC0A2D;
   margin: 0;
+  -webkit-filter: drop-shadow(1px 1px 0 #0c0a0a);
+          filter: drop-shadow(1px 1px 0 #0c0a0a);
 }
 
 .header__list__item__reset__arrow {
@@ -375,10 +389,10 @@ a, p {
 .header__list__item__reset__arrow::before {
   content: "";
   position: absolute;
-  height: 0;
-  width: 0;
   top: 0px;
   left: 80%;
+  height: 0;
+  width: 0;
   border-left: 15px solid #f6f6f6;
   border-top: 10px solid transparent;
   border-bottom: 15px solid transparent;
@@ -426,8 +440,8 @@ a, p {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  border-radius: 10px;
   padding: 40px;
+  border-radius: 10px;
   background: #7b7b7b;
 }
 
@@ -459,12 +473,12 @@ a, p {
 }
 
 .footer {
-  background: url(../assets/pokeballs.jpg);
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  background: url(../assets/pokeballs.jpg);
 }
 
 .footer__landing {
@@ -473,25 +487,18 @@ a, p {
   background: rgba(12, 10, 10, 0.9);
 }
 
-.footer__landing .wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+.footer__landing__logo {
+  max-height: 260px;
+  width: 100%;
+  margin-top: 20vh;
+  margin-bottom: 25px;
 }
 
-.footer__landing__logo {
-  margin-top: 20%;
-  margin-bottom: 25px;
+.footer__landing__logo img {
+  -o-object-fit: scale-down;
+     object-fit: scale-down;
+  max-height: 260px;
+  width: 100%;
 }
 
 .footer__landing__welcome {
@@ -505,7 +512,7 @@ a, p {
   background-repeat: no-repeat;
 }
 
-.footer__landing__welcome:before, .footer__landing__welcome:after {
+.footer__landing__welcome::before, .footer__landing__welcome::after {
   content: "";
   width: calc(100% + 20px);
   height: 0;
@@ -513,14 +520,14 @@ a, p {
   left: -10px;
 }
 
-.footer__landing__welcome:before {
+.footer__landing__welcome::before {
   top: -10px;
   border-bottom: 10px solid #000;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
 }
 
-.footer__landing__welcome:after {
+.footer__landing__welcome::after {
   bottom: -15px;
   border-top: 15px solid #000;
   border-left: 10px solid transparent;
@@ -534,14 +541,14 @@ a, p {
   font-weight: 400;
   color: #0c0a0a;
   position: relative;
-  margin: 0;
-  border-left: 10px solid #000;
-  border-right: 10px solid #000;
   padding: 10px;
   padding-bottom: 30px;
+  border-left: 10px solid #000;
+  border-right: 10px solid #000;
+  margin: 0;
 }
 
-.footer__landing__welcome p:before, .footer__landing__welcome p:after {
+.footer__landing__welcome p::before, .footer__landing__welcome p::after {
   content: "";
   width: calc(100% + 20px);
   height: 0;
@@ -549,14 +556,14 @@ a, p {
   left: -10px;
 }
 
-.footer__landing__welcome p:before {
+.footer__landing__welcome p::before {
   top: -15px;
   border-bottom: 15px solid #000;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
 }
 
-.footer__landing__welcome p:after {
+.footer__landing__welcome p::after {
   bottom: -10px;
   border-top: 10px solid #000;
   border-left: 10px solid transparent;
@@ -571,7 +578,13 @@ a, p {
   color: #DC0A2D;
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 3px;
+  -webkit-filter: drop-shadow(1px 1px 0 #0c0a0a);
+          filter: drop-shadow(1px 1px 0 #0c0a0a);
+}
+
+.footer__landing__welcome p button span {
+  color: #0c0a0a;
 }
 
 @media (max-width: 870px) {

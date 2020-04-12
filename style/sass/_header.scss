@@ -5,18 +5,6 @@
     padding: 10px 20px 0 20px;
     margin-bottom: 10px;
   
-  &::after {
-    content: '';
-    position: absolute;
-    top: 60px;
-    left: 0;
-    z-index: -1;
-    width: 30px;
-    height: calc( 100% - 60px );
-    border-right: 0;
-    border-right: 3px solid $primaryBlack;
-  }
-
   &__list {
     @include flexCenter();
     justify-content: space-between;
@@ -27,7 +15,9 @@
     }
 
     &__item__timer {
+      @include fontSans(34, 400, $primaryColor);
       margin: 0;
+      filter: drop-shadow(1px 1px 0 $secondaryBlack);
     }
   }
 
@@ -49,10 +39,10 @@
     &::before {
       content: "";
       position: absolute;
-      height: 0;
-      width: 0;
       top: 0px;
       left: 80%;
+      height: 0;
+      width: 0;
       
       border-left: 15px solid $primaryWhite;
       border-top: 10px solid transparent;

@@ -1,8 +1,6 @@
 const memApp = {}; // namespace
 
 memApp.amountOfCards = 20; // could add difficulty button to change this
-// memApp.amountOfCards = 16; 
-// memApp.amountOfCards = 36; 
 // -----------------
 // randomize number
 // -----------------
@@ -18,7 +16,6 @@ memApp.randomize = function(maxNumber) {
 // append html of cards to container
 memApp.populateCards = function() {
   $(".main__cards-container").empty();
-  // $(".footer").hide();
   for ( let n = 1; n <= memApp.amountOfCards / 2; n++ ) {
     const pokemon = memApp.pokemonApi(memApp.randomize(151));
 
@@ -39,6 +36,7 @@ memApp.populateCards = function() {
     }
   }
   memApp.randomizeCardOrder();
+  $(".footer").hide();
 }
 // -----------------
 // random card order
@@ -53,7 +51,7 @@ memApp.randomizeCardOrder = function() {
       $(`.main__cards-container__card:nth-of-type(${i})`).addClass(`card${i}`);
       $(`.card${i}`).css("order", `${randomOrder}`);
     }
-  }, 700);
+  }, 600);
 }
 // -----------------
 // click on cards
@@ -63,6 +61,7 @@ memApp.cardIsClicked = function() {
   let clicksInContainer = -1;
   const clickedPokeName = [];
   const clickedCard = [];
+  let matchedCards = 0;
   
   $(".main__cards-container").on("click", ".main__cards-container__card__overlay", function() {
     clicksInContainer++;
@@ -74,16 +73,29 @@ memApp.cardIsClicked = function() {
     
     // every even click, compare clickedPokeName[current] vs [previous] and do some shit
     if ( (clicksInContainer + 1) % 2 === 0 ) {
-      if (clickedPokeName[clicksInContainer] === clickedPokeName[accessPrevious]) {
-        // if cards match, then:
+      if (clickedPokeName[clicksInContainer] === clickedPokeName[accessPrevious] && matchedCards === (memApp.amountOfCards - 2)) {
+        // if won:
+        const wonHtml = `
+        You WON! You managed to MATCH all the Pokémon! CLICK start to test your SKILLS again!
+        <button class="footer__landing__welcome__button">START <span>&#9660</span></button>`;
+        
+        $(".footer__landing__welcome p").html(wonHtml);
+        $(".footer").show();
+
+      } else if (clickedPokeName[clicksInContainer] === clickedPokeName[accessPrevious] && matchedCards < memApp.amountOfCards) {
+        // if cards match but didn't win yet:
+        matchedCards+= 2;
 
       } else if (clickedPokeName[clicksInContainer] != clickedPokeName[accessPrevious]) {
+        // cards don't match:
         setTimeout(() => {
           $(this).css("width", "100%").css("height", "100%");
           $(clickedCard[accessPrevious]).css("width", "100%").css("height", "100%");
         }, 600);
+
       } else {
-        console.log("stop being safi");
+        // error
+        console.log("error! stop being safi");
       }
     }
 
@@ -108,19 +120,25 @@ memApp.pokemonApi = function(pokeId) {
 memApp.timer = function(timerStartsAt) {
   // timerCount as variable to add difficulty feature later
   let timerCount = parseInt(timerStartsAt); 
-  $(".header__list__item__timer").html(timerCount);
+  $(".header__list__item__timer").html(timerCount+'s');
 
   const timer = setInterval(function() {
     timerCount--;
 
     if (timerCount > 0) {
-      $(".header__list__item__timer").html(timerCount);
+      $(".header__list__item__timer").html(timerCount+'s');
     } else if (timerCount <= 0) {
       clearInterval(timer);
+      
+      const lostHtml = `
+      You ran OUT of TIME! Better luck NEXT time. CLICK start to try again!
+      <button class="footer__landing__welcome__button">START <span>&#9660</span></button>`;
+      
+      $(".footer__landing__welcome p").html(lostHtml);
       $(".footer").show();
     } else {
       clearInterval(timer);
-      console.log("safi, please stop breaking my shit");
+      console.log("error! safi, please stop breaking my shit");
     }
     
   }, 1000);
@@ -129,15 +147,17 @@ memApp.timer = function(timerStartsAt) {
 // init
 // -----------------
 memApp.init = function() {
-  memApp.populateCards();
-  memApp.cardIsClicked();
-
-  $(".header__list__item__reset").on("click", function(e) {
+  // memApp.populateCards();
+  
+  $(".header__list__item__reset, .footer__landing__welcome")
+  .on("click", ".footer__landing__welcome__button", function(e) {
     e.preventDefault();
-    // time to complete game
     memApp.populateCards();
-    memApp.timer(5);
+    // time to complete game
+    memApp.timer(40);
   });
+
+  memApp.cardIsClicked();
 }
 // -----------------
 // doc ready

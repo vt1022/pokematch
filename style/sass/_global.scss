@@ -1,7 +1,7 @@
 ::selection { color: turquoise; }
 :focus {@include focusState();}
-html {scroll-behavior: smooth;}
-body {background: linear-gradient(-80deg, $primaryBlack 0%, $primaryBlack 80%, $primaryColor 80%, $primaryColor 100%);background-repeat: no-repeat;}
+html {scroll-behavior: smooth; background: url(../assets/pokeballs.jpg);}
+body {background: rgba(12, 10, 10, 0.9);}
 img {display: block;}
 
 ul, ol, li {
@@ -17,12 +17,18 @@ button {
   background: none;
 }
 
-a, p {
-  @include fontSize(36);
-}
+a, p {@include fontSize(36);}
 
 .wrapper {
   max-width: calc( #{$squareCardSize} * 5 + 80px );
+  width: 80%;
+  margin: 0 auto;
+}
+
+.wrapperFooter {
+  @include flexCenter();
+  flex-direction: column;
+  max-width: 1200px;
   width: 80%;
   margin: 0 auto;
 }
