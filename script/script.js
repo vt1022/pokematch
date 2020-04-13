@@ -83,7 +83,8 @@ memApp.cardIsClicked = function(timerStartsAt) {
   
   $(".main__cards-container").on("click", ".main__cards-container__card__overlay", function() {
     clicksInContainer++;
-    $(this).css("width", "0%").css("height", "0%");
+    const $this = $(this);
+    $this.css("width", "0%").css("height", "0%");
     
     let accessPrevious = clicksInContainer - 1;
     clickedCard.push($(this));
@@ -110,9 +111,9 @@ memApp.cardIsClicked = function(timerStartsAt) {
         // cards don't match:
         setTimeout(function() {
           // put overlay back on to both cards
-          $(clickedCard[clicksInContainer]).css("width", "100%").css("height", "100%");
+          $this.css("width", "100%").css("height", "100%");
           $(clickedCard[accessPrevious]).css("width", "100%").css("height", "100%");
-        }, 600);
+        }, 300);
 
       } else {
         // error
