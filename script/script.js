@@ -104,11 +104,13 @@ memApp.cardIsClicked = function(timerStartsAt) {
       } else if (clickedPokeName[clicksInContainer] === clickedPokeName[accessPrevious] && matchedCards < memApp.amountOfCards) {
         // if cards match but didn't win yet:
         matchedCards+= 2;
+        
 
       } else if (clickedPokeName[clicksInContainer] != clickedPokeName[accessPrevious]) {
         // cards don't match:
         setTimeout(function() {
-          $(this).css("width", "100%").css("height", "100%");
+          // put overlay back on to both cards
+          $(clickedCard[clicksInContainer]).css("width", "100%").css("height", "100%");
           $(clickedCard[accessPrevious]).css("width", "100%").css("height", "100%");
         }, 600);
 
