@@ -114,7 +114,7 @@ memApp.cardIsClicked = function(timerStartsAt) {
           // put overlay back on to both cards
           $this.css("width", "100%").css("height", "100%");
           $(clickedCard[accessPrevious]).css("width", "100%").css("height", "100%");
-        }, 300);
+        }, 600);
 
       } else {
         // error
