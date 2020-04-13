@@ -63,6 +63,7 @@ memApp.randomizeCardOrder = function() {
       // nth-of-type(i) log looked weird so i tried to log nth-of-type(1) to break it down
       // for some reason nth-of-type(1) logs ALL the (.main...overlay)s
       // nth-of-type(anything but 1) logs nothing?
+      // is this because of event bubbling? (.main...overlay)s aren't in index.html
 
       // $(`.main__cards-container__card__overlay:nth-of-type(${i})`).attr("tabindex", i);
       // console.log(i, $(`.main__cards-container__card__overlay:nth-of-type(${i})`));
@@ -177,6 +178,7 @@ memApp.init = function() {
     memApp.populateCards();
     // cardIsClicked param sets timer value. lower it for testing.
     memApp.cardIsClicked(40);
+
   });
 
 }
