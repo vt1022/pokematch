@@ -1,3 +1,5 @@
+// learned that I should put media queries in their respective .scss files in the middle of this project.
+// will start doing this in the next project.
 @media (max-width: 870px) {
   $squareCardSize: 120px;
 
@@ -5,6 +7,10 @@
     max-width: calc( #{$squareCardSize} * 4 + 80px );
     width: 90%;
   } 
+
+  .header {
+    padding: 10px 20px 0;
+  }
 
   .main {
     &__cards-container__card {
@@ -32,6 +38,11 @@
       }
     }
   }
+
+  .footer__landing__welcome p {
+    @include fontSize(20);
+    line-height: 20 * 1.6px;
+  }
 }
 
 @media (max-width: 585px) {
@@ -49,6 +60,65 @@
       &__card {
         flex: 0 1 $squareCardSize;
         height: $squareCardSize;
+      }
+    }
+  }
+
+  .footer__landing {
+    
+    &__welcome {
+      padding: 22px 7px 17px 7px;
+      border-left: 7px solid #000;
+      border-right: 7px solid #000;
+      
+      // before and afters to build the outer border
+      &::before, &::after {
+        width: calc(100% + 14px);
+        left: -7px;
+      }
+
+      &::before {
+        top: -7px;
+        border-bottom: 7px solid #000;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+      }
+
+      &::after {
+        bottom: -12px;
+        border-top: 12px solid #000;
+        border-left: 7px solid transparent;
+        border-right: 7px solid transparent;
+      }
+
+      p {
+        @include fontSize(16);
+        line-height: 16 * 1.6px;
+
+        padding: 7px;
+        padding-bottom: 20px;
+        border-left: 7px solid #000;
+        border-right: 7px solid #000;
+
+        // before and afters to build inner border
+        &::before, &::after {
+          width: calc(100% + 14px);
+          left: -7px;
+        }
+  
+        &::before {
+          top: -12px;
+          border-bottom: 12px solid #000;
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
+        }
+  
+        &::after {
+          bottom: -7px;
+          border-top: 7px solid #000;
+          border-left: 7px solid transparent;
+          border-right: 7px solid transparent;
+        }
       }
     }
   }

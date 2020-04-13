@@ -62,10 +62,11 @@
 
       p {
         @include fontSans(26, 400, $secondaryBlack);
+        line-height: 26 * 1.6px;
         position: relative;
 
         padding: 10px;
-        padding-bottom: 30px;
+        padding-bottom: 20px;
         border-left: 10px solid #000;
         border-right: 10px solid #000;
         margin: 0;

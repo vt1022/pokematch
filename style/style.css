@@ -333,9 +333,10 @@ a, p {
 
 .header {
   position: static;
-  width: 100%;
+  max-width: calc( 150px * 5 + 80px);
   height: 60px;
-  padding: 10px 20px 0 20px;
+  padding: 20px 0 0;
+  margin: 0 auto;
   margin-bottom: 10px;
 }
 
@@ -372,8 +373,8 @@ a, p {
 
 .header__list__item__reset__arrow {
   position: relative;
-  height: 60px;
-  width: 60px;
+  height: 40px;
+  width: 40px;
   border: 5px solid transparent;
   border-top-color: #f6f6f6;
   border-left-color: #f6f6f6;
@@ -389,13 +390,13 @@ a, p {
 .header__list__item__reset__arrow::before {
   content: "";
   position: absolute;
-  top: 0px;
+  top: -3px;
   left: 80%;
   height: 0;
   width: 0;
-  border-left: 15px solid #f6f6f6;
+  border-left: 10px solid #f6f6f6;
   border-top: 10px solid transparent;
-  border-bottom: 15px solid transparent;
+  border-bottom: 10px solid transparent;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   -webkit-transition: all .4s ease-in-out;
@@ -540,9 +541,10 @@ a, p {
   font-family: 'Lexend Giga', sans-serif;
   font-weight: 400;
   color: #0c0a0a;
+  line-height: 41.6px;
   position: relative;
   padding: 10px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   border-left: 10px solid #000;
   border-right: 10px solid #000;
   margin: 0;
@@ -615,6 +617,9 @@ a, p {
     max-width: calc( 120px * 4 + 80px);
     width: 90%;
   }
+  .header {
+    padding: 10px 20px 0;
+  }
   .main__cards-container__card {
     -webkit-box-flex: 0;
         -ms-flex: 0 1 120px;
@@ -639,6 +644,11 @@ a, p {
             flex: 0 1 100px;
     height: 100px;
   }
+  .footer__landing__welcome p {
+    font-size: 20px;
+    font-size: 2rem;
+    line-height: 32px;
+  }
 }
 
 @media (max-width: 585px) {
@@ -654,5 +664,51 @@ a, p {
         -ms-flex: 0 1 85px;
             flex: 0 1 85px;
     height: 85px;
+  }
+  .footer__landing__welcome {
+    padding: 22px 7px 17px 7px;
+    border-left: 7px solid #000;
+    border-right: 7px solid #000;
+  }
+  .footer__landing__welcome::before, .footer__landing__welcome::after {
+    width: calc(100% + 14px);
+    left: -7px;
+  }
+  .footer__landing__welcome::before {
+    top: -7px;
+    border-bottom: 7px solid #000;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+  }
+  .footer__landing__welcome::after {
+    bottom: -12px;
+    border-top: 12px solid #000;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+  }
+  .footer__landing__welcome p {
+    font-size: 16px;
+    font-size: 1.6rem;
+    line-height: 25.6px;
+    padding: 7px;
+    padding-bottom: 20px;
+    border-left: 7px solid #000;
+    border-right: 7px solid #000;
+  }
+  .footer__landing__welcome p::before, .footer__landing__welcome p::after {
+    width: calc(100% + 14px);
+    left: -7px;
+  }
+  .footer__landing__welcome p::before {
+    top: -12px;
+    border-bottom: 12px solid #000;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+  }
+  .footer__landing__welcome p::after {
+    bottom: -7px;
+    border-top: 7px solid #000;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
   }
 }

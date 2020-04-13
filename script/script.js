@@ -1,6 +1,14 @@
+// ---------------------------------------------------
+// readme before marking
+// ---------------------------------------------------
+// .js line 166 - reduce timer count for ease of testing
+// main.scss line 26 - add opacity on overlays for ease of testing
+// .js line 56 - encountered a problem I couldn't solve
+// ---------------------------------------------------
+// ---------------------------------------------------
 const memApp = {}; // namespace
 
-memApp.amountOfCards = 20; // could add difficulty button to change this
+memApp.amountOfCards = 20; // add difficulty button to change this later
 // -----------------
 // randomize number
 // -----------------
@@ -26,9 +34,9 @@ memApp.populateCards = function() {
   
         let htmlToAppend = `
         <div class="main__cards-container__card">
-        <button class="main__cards-container__card__overlay" aria-label="${pokemonName}">
-        </button>
-        <img src="${pokemonImageUrl}" alt="${pokemonName}" class="main__cards-container__card__image">
+          <button class="main__cards-container__card__overlay" aria-label="${pokemonName}">
+          </button>
+          <img src="${pokemonImageUrl}" alt="${pokemonName}" class="main__cards-container__card__image">
         </div>`;
   
         $(".main__cards-container").append(htmlToAppend);
@@ -44,12 +52,22 @@ memApp.populateCards = function() {
 // add class to each card
 // add random order to each card
 memApp.randomizeCardOrder = function() {
-  // FIX THIS FOR ACCESS. google tab index
-  setTimeout(() => {
+  setTimeout(function() {
     for ( let i = 1; i <= memApp.amountOfCards; i++ ) {
       const randomOrder = memApp.randomize(100);
       $(`.main__cards-container__card:nth-of-type(${i})`).addClass(`card${i}`);
       $(`.card${i}`).css("order", `${randomOrder}`);
+      
+      // FIX THIS FOR ACCESSIBILITY
+      // set tab indexes in visual order of cards
+      // nth-of-type(i) log looked weird so i tried to log nth-of-type(1) to break it down
+      // for some reason nth-of-type(1) logs ALL the (.main...overlay)s
+      // nth-of-type(anything but 1) logs nothing?
+
+      // $(`.main__cards-container__card__overlay:nth-of-type(${i})`).attr("tabindex", i);
+      // console.log(i, $(`.main__cards-container__card__overlay:nth-of-type(${i})`));
+      // console.log(i, $(`.main__cards-container__card__overlay:nth-of-type(1)`));
+      // console.log(i, $(`.main__cards-container__card__overlay:nth-of-type(2)`));
     }
   }, 600);
 }
@@ -57,7 +75,7 @@ memApp.randomizeCardOrder = function() {
 // click on cards
 // -----------------
 // event handler on container, then target card overlay
-memApp.cardIsClicked = function() {
+memApp.cardIsClicked = function(timerStartsAt) {
   let clicksInContainer = -1;
   const clickedPokeName = [];
   const clickedCard = [];
@@ -75,6 +93,7 @@ memApp.cardIsClicked = function() {
     if ( (clicksInContainer + 1) % 2 === 0 ) {
       if (clickedPokeName[clicksInContainer] === clickedPokeName[accessPrevious] && matchedCards === (memApp.amountOfCards - 2)) {
         // if won:
+        clearInterval(timer);
         const wonHtml = `
         You WON! You managed to MATCH all the Pokémon! CLICK start to test your SKILLS again!
         <button class="footer__landing__welcome__button"><span>&#9654</span>START</button>`;
@@ -88,7 +107,7 @@ memApp.cardIsClicked = function() {
 
       } else if (clickedPokeName[clicksInContainer] != clickedPokeName[accessPrevious]) {
         // cards don't match:
-        setTimeout(() => {
+        setTimeout(function() {
           $(this).css("width", "100%").css("height", "100%");
           $(clickedCard[accessPrevious]).css("width", "100%").css("height", "100%");
         }, 600);
@@ -100,26 +119,9 @@ memApp.cardIsClicked = function() {
     }
 
   });
-}
-// -----------------
-// pokemon api
-// -----------------
-// save pokemon promise in function
-memApp.pokemonApi = function(pokeId) {
-  const pokePromise = $.ajax({
-    url: `https://pokeapi.co/api/v2/pokemon/${pokeId}/`,
-    dataType: "json",
-    method: "GET"
-  });
 
-  return pokePromise;
-}
-// -----------------
-// count down timer
-// -----------------
-
-memApp.timer = function(timerStartsAt) {
-  // timerCount as variable to add difficulty feature later
+  // timer
+  // timerCount is a variable to add difficulty option in the future
   let timerCount = parseInt(timerStartsAt); 
   $(".header__list__item__timer").html(timerCount+'s');
 
@@ -128,6 +130,8 @@ memApp.timer = function(timerStartsAt) {
 
     if (timerCount > 0) {
       $(".header__list__item__timer").html(timerCount+'s');
+      console.log(timerCount);
+      
     } else if (timerCount <= 0) {
       clearInterval(timer);
       
@@ -145,20 +149,31 @@ memApp.timer = function(timerStartsAt) {
   }, 1000);
 }
 // -----------------
+// pokemon api
+// -----------------
+// save pokemon promise in function
+memApp.pokemonApi = function(pokeId) {
+  const pokePromise = $.ajax({
+    url: `https://pokeapi.co/api/v2/pokemon/${pokeId}/`,
+    dataType: "json",
+    method: "GET"
+  });
+
+  return pokePromise;
+}
+// -----------------
 // init
 // -----------------
 memApp.init = function() {
-  // memApp.populateCards();
   
   $(".header__list__item__reset, .footer__landing__welcome")
   .on("click", ".footer__landing__welcome__button", function(e) {
     e.preventDefault();
     memApp.populateCards();
-    // time to complete game
-    memApp.timer(40);
+    // cardIsClicked param sets timer value. lower it for testing.
+    memApp.cardIsClicked(40);
   });
 
-  memApp.cardIsClicked();
 }
 // -----------------
 // doc ready
