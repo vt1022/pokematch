@@ -118,6 +118,7 @@ memApp.cardIsClicked = function(timerStartsAt) {
       } else {
         // error
         console.log("error! stop being safi");
+
       }
     }
 
@@ -133,7 +134,6 @@ memApp.cardIsClicked = function(timerStartsAt) {
 
     if (timerCount > 0) {
       $(".header__list__item__timer").html(timerCount+'s');
-      console.log(timerCount);
       
     } else if (timerCount <= 0) {
       clearInterval(timer);
@@ -144,9 +144,11 @@ memApp.cardIsClicked = function(timerStartsAt) {
       
       $(".footer__landing__welcome p").html(lostHtml);
       $(".footer").show();
+
     } else {
       clearInterval(timer);
       console.log("error! safi, please stop breaking my shit");
+
     }
     
   }, 1000);
@@ -168,7 +170,7 @@ memApp.pokemonApi = function(pokeId) {
 // init
 // -----------------
 memApp.init = function() {
-  
+  // clicking reset/start button brings user back to landing
   $(".header__list__item__reset, .footer__landing__welcome")
   .on("click", ".footer__landing__welcome__button", function(e) {
     e.preventDefault();
