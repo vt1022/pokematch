@@ -11,12 +11,19 @@ const memApp = {}; // namespace
 memApp.amountOfCards = 20; // add difficulty button to change this later
 memApp.pokemonsFromApi = [];
 // -----------------
-// randomize number
+// fisher yates shuffle algorithm:
 // -----------------
-// create randomizer function
-memApp.randomize = function(maxNumber) {
-  return Math.floor(Math.random() * maxNumber) + 1;
-};
+// from: https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+memApp.shuffleArray = function(a) {
+  let j, x, i;
+  for (i = a.length - 1; i > 0; i--) {
+    j = Math.floor(Math.random() * (i + 1));
+    x = a[i];
+    a[i] = a[j];
+    a[j] = x;
+  }
+  return a;
+}
 // -----------------
 // populate cards
 // -----------------
@@ -25,53 +32,27 @@ memApp.randomize = function(maxNumber) {
 // append html of cards to container
 memApp.populateCards = function() {
   $(".main__cards-container").empty();
-  for ( let n = 1; n <= memApp.amountOfCards / 2; n++ ) {
-    const pokemon = memApp.pokemonApi(memApp.randomize(151));
+  memApp.shuffleArray(memApp.pokemonsFromApi);
+  // take the first X pokemon from the shuffled array where X is half of the game cards amount
+  const pokemonCards = memApp.pokemonsFromApi.splice(0, memApp.amountOfCards / 2);
+  // double the the array to make pairs and shuffle them again
+  pokemonCards.push(...pokemonCards);
+  memApp.shuffleArray(pokemonCards);
+  
+  pokemonCards.forEach((pokemonObject) => {
+    const { name, image } = pokemonObject
 
-    for ( let i = 1; i <=2; i++ ) {
-      pokemon.then(function(result) {
-        const pokemonName = result.name;
-        const pokemonImageUrl = result.sprites.front_default;
-  
-        let htmlToAppend = `
-        <div class="main__cards-container__card">
-          <button class="main__cards-container__card__overlay" aria-label="${pokemonName}">
-          </button>
-          <img src="${pokemonImageUrl}" alt="${pokemonName}" class="main__cards-container__card__image">
-        </div>`;
-  
-        $(".main__cards-container").append(htmlToAppend);
-      });
-    }
-  }
-  // memApp.randomizeCardOrder();
+    let htmlToAppend = `
+    <div class="main__cards-container__card">
+      <div class="main__cards-container__card__overlay" aria-label="${name}">
+      </div>
+      <img src="${image}" alt="${name}" class="main__cards-container__card__image">
+    </div>`;
+
+    $(".main__cards-container").append(htmlToAppend);
+  });
+
   $(".footer").hide();
-}
-// -----------------
-// random card order
-// -----------------
-// add class to each card
-// add random order to each card
-memApp.randomizeCardOrder = function() {
-  setTimeout(function() {
-    for ( let i = 1; i <= memApp.amountOfCards; i++ ) {
-      const randomOrder = memApp.randomize(100);
-      $(`.main__cards-container__card:nth-of-type(${i})`).addClass(`card${i}`);
-      $(`.card${i}`).css("order", `${randomOrder}`);
-      
-      // FIX THIS FOR ACCESSIBILITY
-      // set tab indexes in visual order of cards
-      // nth-of-type(i) log looked weird so i tried to log nth-of-type(1) to break it down
-      // for some reason nth-of-type(1) logs ALL the (.main...overlay)s
-      // nth-of-type(anything but 1) logs nothing?
-      // is this because of event bubbling? (.main...overlay)s aren't in index.html
-
-      // $(`.main__cards-container__card__overlay:nth-of-type(${i})`).attr("tabindex", i);
-      // console.log(i, $(`.main__cards-container__card__overlay:nth-of-type(${i})`));
-      // console.log(i, $(`.main__cards-container__card__overlay:nth-of-type(1)`));
-      // console.log(i, $(`.main__cards-container__card__overlay:nth-of-type(2)`));
-    }
-  }, 600);
 }
 // -----------------
 // click on cards
@@ -107,7 +88,6 @@ memApp.cardIsClicked = function(timerStartsAt) {
       } else if (clickedPokeName[clicksInContainer] === clickedPokeName[accessPrevious] && matchedCards < memApp.amountOfCards) {
         // if cards match but didn't win yet:
         matchedCards+= 2;
-        
 
       } else if (clickedPokeName[clicksInContainer] != clickedPokeName[accessPrevious]) {
         // cards don't match:
@@ -172,7 +152,7 @@ memApp.pokemonApi = function(pokeId) {
 // save pokemon info into local array
 memApp.apiDataToLocal = function() {
   for (let i = 1; i < 152; i++) {
-    memApp.pokemonApi(i).then((result)=> {
+    memApp.pokemonApi(i).then((result) => {
       const pokemonName = result.name;
       const pokemonImageUrl = result.sprites.front_default;
 
