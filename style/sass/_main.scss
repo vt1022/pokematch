@@ -10,22 +10,45 @@
     border-radius: 10px;
     background: lighten($primaryBlack, 30%);
 
-    &__card {
+    &__inner {
       position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: all 0.6s ease;
+      transform-style: preserve-3d;
+    }
+
+    &__card {
       flex: 0 1 $squareCardSize;
       height: $squareCardSize;
+      width: $squareCardSize;
       border: 1px solid $secondaryBlack;
+      background-color: transparent;
+      perspective: 1000px;
 
-      &__overlay {
+      // &:hover .main__cards-container__inner {
+      //   transform: rotateY(180deg);
+      // }
+
+      &__front, 
+      &__back {
         position: absolute;
         width: 100%;
         height: 100%;
-        
+        backface-visibility: hidden;
+      }
+
+      &__front {
         background: lighten($primaryBlack, 70%);
-        transition: all .3s ease;
+        // transition: all .3s ease;
         // opacity: 80%; // uncomment this for testing
         
         &:focus {background: $primaryColor;}
+      }
+
+      &__back {
+        transform: rotateY(180deg);
       }
 
       &__image {
@@ -33,5 +56,9 @@
         width: 100%;
       }
     }
+  }
+
+  .flip-card {
+    transform: rotateY(180deg);
   }
 }

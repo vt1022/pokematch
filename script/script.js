@@ -42,12 +42,23 @@ memApp.populateCards = function() {
   pokemonCards.forEach((pokemonObject) => {
     const { name, image } = pokemonObject
 
+    // let htmlToAppend = `
+    // <div class="main__cards-container__card">
+    //   <div class="main__cards-container__card__front" aria-label="${name}">
+    //   </div>
+    //   <img src="${image}" alt="${name}" class="main__cards-container__card__image">
+    // </div>`;
+
     let htmlToAppend = `
-    <div class="main__cards-container__card">
-      <div class="main__cards-container__card__overlay" aria-label="${name}">
-      </div>
-      <img src="${image}" alt="${name}" class="main__cards-container__card__image">
-    </div>`;
+      <div class="main__cards-container__card">
+        <div class="main__cards-container__inner">
+          <div class="main__cards-container__card__front" aria-label="${name}">
+          </div>
+          <div class="main__cards-container__card__back">
+            <img src="${image}" alt="${name}" class="main__cards-container__card__image">
+          </div>
+        </div>
+      </div>`;
 
     $(".main__cards-container").append(htmlToAppend);
   });
@@ -64,10 +75,11 @@ memApp.cardIsClicked = function(timerStartsAt) {
   const clickedCard = [];
   let matchedCards = 0;
   
-  $(".main__cards-container").on("click", ".main__cards-container__card__overlay", function() {
+  $(".main__cards-container").on("click", ".main__cards-container__card__front", function() {
     clicksInContainer++;
     const $this = $(this);
-    $this.css("width", "0%").css("height", "0%");
+    // $this.css("width", "0%").css("height", "0%");
+    $this.toggleClass("flip-card");
     
     let accessPrevious = clicksInContainer - 1;
     clickedCard.push($(this));
