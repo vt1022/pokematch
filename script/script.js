@@ -9,6 +9,7 @@
 const memApp = {}; // namespace
 
 memApp.amountOfCards = 20; // add difficulty button to change this later
+memApp.pokemonsFromApi = [];
 // -----------------
 // randomize number
 // -----------------
@@ -43,7 +44,7 @@ memApp.populateCards = function() {
       });
     }
   }
-  memApp.randomizeCardOrder();
+  // memApp.randomizeCardOrder();
   $(".footer").hide();
 }
 // -----------------
@@ -155,22 +156,38 @@ memApp.cardIsClicked = function(timerStartsAt) {
   }, 1000);
 }
 // -----------------
-// pokemon api
+// pokemon api promise
 // -----------------
-// save pokemon promise in function
 memApp.pokemonApi = function(pokeId) {
   const pokePromise = $.ajax({
     url: `https://pokeapi.co/api/v2/pokemon/${pokeId}/`,
     dataType: "json",
     method: "GET"
   });
-
   return pokePromise;
+}
+// -----------------
+// pokemon api
+// -----------------
+// save pokemon info into local array
+memApp.apiDataToLocal = function() {
+  for (let i = 1; i < 152; i++) {
+    memApp.pokemonApi(i).then((result)=> {
+      const pokemonName = result.name;
+      const pokemonImageUrl = result.sprites.front_default;
+
+      memApp.pokemonsFromApi.push({
+        name: pokemonName,
+        image: pokemonImageUrl
+      });
+    })
+  }
 }
 // -----------------
 // init
 // -----------------
 memApp.init = function() {
+  memApp.apiDataToLocal();
   // clicking reset/start button brings user back to landing
   $(".header__list__item__reset, .footer__landing__welcome")
   .on("click", ".footer__landing__welcome__button", function(e) {
