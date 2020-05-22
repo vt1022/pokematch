@@ -79,11 +79,13 @@ memApp.cardIsClicked = function(timerStartsAt) {
     clicksInContainer++;
     const $this = $(this);
     // $this.css("width", "0%").css("height", "0%");
-    $this.toggleClass("flip-card");
+    $this.parent().toggleClass("flip-card");
+    
     
     let accessPrevious = clicksInContainer - 1;
-    clickedCard.push($(this));
-    clickedPokeName.push($(this)[0].nextElementSibling.alt);
+    clickedCard.push($(this).parent());
+    clickedPokeName.push($(this).attr("aria-label"));
+    
     
     // every even click, compare clickedPokeName[current] vs [previous] and do some shit
     if ( (clicksInContainer + 1) % 2 === 0 ) {
@@ -96,17 +98,15 @@ memApp.cardIsClicked = function(timerStartsAt) {
         
         $(".footer__landing__welcome p").html(wonHtml);
         $(".footer").show();
-
       } else if (clickedPokeName[clicksInContainer] === clickedPokeName[accessPrevious] && matchedCards < memApp.amountOfCards) {
         // if cards match but didn't win yet:
         matchedCards+= 2;
-
       } else if (clickedPokeName[clicksInContainer] != clickedPokeName[accessPrevious]) {
         // cards don't match:
         setTimeout(function() {
-          // put overlay back on to both cards
-          $this.css("width", "100%").css("height", "100%");
-          $(clickedCard[accessPrevious]).css("width", "100%").css("height", "100%");
+          // flip cards back:
+          $this.parent().removeClass("flip-card");
+          $(clickedCard[accessPrevious]).removeClass("flip-card");
         }, 600);
 
       } else {
