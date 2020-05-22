@@ -53,6 +53,7 @@ memApp.populateCards = function() {
       <div class="main__cards-container__card">
         <div class="main__cards-container__inner">
           <div class="main__cards-container__card__front" aria-label="${name}">
+            <img src="./assets/favicon.png" alt="pokeball">
           </div>
           <div class="main__cards-container__card__back">
             <img src="${image}" alt="${name}" class="main__cards-container__card__image">
@@ -78,9 +79,9 @@ memApp.cardIsClicked = function(timerStartsAt) {
   $(".main__cards-container").on("click", ".main__cards-container__card__front", function() {
     clicksInContainer++;
     const $this = $(this);
-    // $this.css("width", "0%").css("height", "0%");
-    $this.parent().toggleClass("flip-card");
-    
+    $(this).parent().toggleClass("flip-card");
+    console.log($this.parent());
+    console.log($(this));
     
     let accessPrevious = clicksInContainer - 1;
     clickedCard.push($(this).parent());
@@ -186,7 +187,7 @@ memApp.init = function() {
     e.preventDefault();
     memApp.populateCards();
     // cardIsClicked param sets timer value. lower it for testing.
-    memApp.cardIsClicked(40);
+    memApp.cardIsClicked(10);
 
   });
 
