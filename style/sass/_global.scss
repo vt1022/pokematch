@@ -20,7 +20,7 @@ button {
 a, p {@include fontSize(36);}
 
 .wrapper {
-  max-width: calc( #{$squareCardSize} * 5 + 80px );
+  max-width: calc( #{$squareCardSize} * 5 + 120px);
   width: 80%;
   margin: 0 auto;
 }

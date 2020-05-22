@@ -4,7 +4,7 @@
   $squareCardSize: 120px;
 
   .wrapper {
-    max-width: calc( #{$squareCardSize} * 4 + 80px );
+    max-width: calc( #{$squareCardSize} * 4 + 120px );
     width: 90%;
   } 
 
@@ -25,7 +25,7 @@
   $squareCardSize: 100px;
   
   .wrapper {
-    max-width: calc( #{$squareCardSize} * 4 + 40px );
+    max-width: calc( #{$squareCardSize} * 4 + 80px );
   }
 
   .main {
@@ -49,7 +49,7 @@
   $squareCardSize: 85px;
   
   .wrapper {
-    max-width: calc( #{$squareCardSize} * 3 + 20px );
+    max-width: calc( #{$squareCardSize} * 3 + 60px );
     width: 99%;
   }
   

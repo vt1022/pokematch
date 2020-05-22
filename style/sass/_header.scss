@@ -22,6 +22,20 @@
     }
   }
 
+  &__list__item__reset {
+    &:focus &__arrow {
+      border: 4px solid $secondaryWhite;
+      background: #29AAFD;
+      transform: rotate(calc(360deg - 45deg));
+    }
+
+    &:focus &__arrow::before {
+      border-left: 0px solid $primaryWhite;
+      border-top: 0px solid transparent;
+      border-bottom: 0px solid transparent;
+    }
+  }
+
   &__list__item__reset__arrow {
     position: relative;
     height: 40px;

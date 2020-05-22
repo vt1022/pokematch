@@ -46,7 +46,7 @@ $secondaryBg: $secondaryWhite;
 }
 
 @mixin focusState() {
-  outline: 3px dotted $primaryWhite;
+  outline: none;
 }
 
 // might be useful

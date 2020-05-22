@@ -100,6 +100,13 @@
           bottom: 0;
           right: 3px;
 
+          &:focus {
+            outline: none;
+            color: $accentColor;
+            
+            span {color: $primaryColor;}
+          }
+
           span {
             color: $secondaryBlack;
             display: inline-block;
