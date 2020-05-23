@@ -18,13 +18,8 @@
       transition: all 0.6s ease;
       transform-style: preserve-3d;
 
-      &:hover,
-      &:focus {
-        transform: translate(4px, -4px) rotateY(15deg);
-      }
-
       &:focus .main__cards-container__card__front {
-        background: $primaryColor;
+          background: $primaryColor;
       }
     }
 
@@ -35,7 +30,7 @@
       margin: 0.3em;
       background-color: transparent;
       transition: all 0.6s ease;
-      filter: drop-shadow(-2px -2px 2px transparent);
+      filter: drop-shadow(-2em 1em 1em transparent);
       perspective: 1000px;
 
       &__front, 
@@ -64,7 +59,7 @@
 
       &__back {
         @include fontSize(15);
-        background: lighten($color: $accentColor, $amount: 55);
+        background: lighten($color: $accentColor, $amount: 65);
         color: $accentColor;
         text-align: center;
         transform: rotateY(180deg);
@@ -75,13 +70,20 @@
         width: 100%;
       }
 
-      &:hover {
-        filter: drop-shadow(-6px -3px 3px #000);
+      &:hover,
+      &:focus-within {
+        transform: translate(4px, -4px) rotateY(15deg);
+        filter: drop-shadow(-3em 2em 1em rgba(12, 10, 10, 0.8));
+        z-index: 2;
       }
     }
   }
 
   .flip-card {
     transform: rotateY(180deg);
+  }
+
+  .matched {
+    background-color: $secondaryColor;
   }
 }

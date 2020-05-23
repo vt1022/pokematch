@@ -471,11 +471,6 @@ a, p {
           transform-style: preserve-3d;
 }
 
-.main__cards-container__inner:hover, .main__cards-container__inner:focus {
-  -webkit-transform: translate(4px, -4px) rotateY(15deg);
-          transform: translate(4px, -4px) rotateY(15deg);
-}
-
 .main__cards-container__inner:focus .main__cards-container__card__front {
   background: #DC0A2D;
 }
@@ -490,8 +485,8 @@ a, p {
   background-color: transparent;
   -webkit-transition: all 0.6s ease;
   transition: all 0.6s ease;
-  -webkit-filter: drop-shadow(-2px -2px 2px transparent);
-          filter: drop-shadow(-2px -2px 2px transparent);
+  -webkit-filter: drop-shadow(-2em 1em 1em transparent);
+          filter: drop-shadow(-2em 1em 1em transparent);
   -webkit-perspective: 1000px;
           perspective: 1000px;
 }
@@ -528,7 +523,7 @@ a, p {
 .main__cards-container__card__back {
   font-size: 15px;
   font-size: 1.5rem;
-  background: #aed5ff;
+  background: #e1efff;
   color: #004894;
   text-align: center;
   -webkit-transform: rotateY(180deg);
@@ -540,14 +535,21 @@ a, p {
   width: 100%;
 }
 
-.main__cards-container__card:hover {
-  -webkit-filter: drop-shadow(-6px -3px 3px #000);
-          filter: drop-shadow(-6px -3px 3px #000);
+.main__cards-container__card:hover, .main__cards-container__card:focus-within {
+  -webkit-transform: translate(4px, -4px) rotateY(15deg);
+          transform: translate(4px, -4px) rotateY(15deg);
+  -webkit-filter: drop-shadow(-3em 2em 1em rgba(12, 10, 10, 0.8));
+          filter: drop-shadow(-3em 2em 1em rgba(12, 10, 10, 0.8));
+  z-index: 2;
 }
 
 .main .flip-card {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+}
+
+.main .matched {
+  background-color: #FFCB08;
 }
 
 .footer {
@@ -556,6 +558,7 @@ a, p {
   bottom: 0;
   left: 0;
   right: 0;
+  z-index: 10;
   background: url(../assets/pokeballs.jpg);
 }
 
