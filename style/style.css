@@ -454,10 +454,6 @@ a, p {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  padding: 40px;
-  border-radius: 10px;
-  margin: 0 auto;
-  width: auto;
 }
 
 .main__cards-container__inner {
@@ -721,14 +717,7 @@ a, p {
 
 @media (max-width: 695px) {
   .wrapper {
-    max-width: 99%;
-    width: 99%;
-  }
-  .main__cards-container {
-    padding: 20px;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: start;
+    width: 100%;
   }
   .main__cards-container__card {
     -webkit-box-flex: 0;
@@ -744,14 +733,12 @@ a, p {
 }
 
 @media (max-width: 585px) {
-  .main__cards-container {
-    padding: 10px;
-  }
   .main__cards-container__card {
     -webkit-box-flex: 0;
         -ms-flex: 0 1 85px;
             flex: 0 1 85px;
     height: 85px;
+    margin: 0.1em;
   }
   .footer__landing__welcome {
     padding: 22px 7px 17px 7px;
@@ -798,5 +785,14 @@ a, p {
     border-top: 7px solid #000;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
+  }
+}
+
+@media (max-width: 400px) {
+  .main__cards-container__card {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 70px;
+            flex: 0 1 70px;
+    height: 70px;
   }
 }

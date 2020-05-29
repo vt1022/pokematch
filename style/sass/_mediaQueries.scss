@@ -6,7 +6,7 @@
   .wrapper {
     max-width: calc( #{$squareCardSize} * 4 + 120px );
     width: 90%;
-  } 
+  }
 
   .header {
     padding: 10px 20px 0;
@@ -18,21 +18,17 @@
       height: $squareCardSize;
     }
   }
-  
 }
 
 @media (max-width: 695px) {
   $squareCardSize: 95px;
   
   .wrapper {
-    max-width: 99%;
-    width: 99%;
+    width: 100%;
   }
 
   .main {
     &__cards-container {
-      padding: 20px;
-      justify-content: start;
       &__card {
         flex: 0 1 $squareCardSize;
         height: $squareCardSize;
@@ -50,11 +46,10 @@
   $squareCardSize: 85px;
   .main {
     &__cards-container {
-      padding: 10px;
-
       &__card {
         flex: 0 1 $squareCardSize;
         height: $squareCardSize;
+        margin: 0.1em;
       }
     }
   }
@@ -114,6 +109,18 @@
           border-left: 7px solid transparent;
           border-right: 7px solid transparent;
         }
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  $squareCardSize: 70px;
+  .main {
+    &__cards-container {
+      &__card {
+        flex: 0 1 $squareCardSize;
+        height: $squareCardSize;
       }
     }
   }

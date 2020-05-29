@@ -5,10 +5,7 @@
   &__cards-container {
     @include flexCenter();
     flex-wrap: wrap;
-    padding: 40px;
-    border-radius: 10px;
-    margin: 0 auto;
-    width: auto;
+
     &__inner {
       position: relative;
       width: 100%;
