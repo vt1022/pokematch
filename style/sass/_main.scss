@@ -1,5 +1,6 @@
 .main {
   @include flexCenter();
+  flex-direction: column;
   height: calc( 100vh - 70px );
 
   &__cards-container {

@@ -8,28 +8,58 @@
   
   &__list {
     @include flexCenter();
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 100%;
+    padding-left: 50px;
 
     &::after {
       content: '';
       position: absolute;
     }
 
-    &__item__timer {
-      @include fontSans(34, 400, $primaryColor);
+    &__item__timer,
+    &__item__reset span {
+      @include fontSans(30, 400, $primaryBlack);
+      display: inline-block;
+      height: 1.5em;
+      width: 100px;
+      padding: .1em .2em;
+      border: .1em solid $secondaryBlack;
+      border-radius: .2em;
       margin: 0;
-      filter: drop-shadow(1px 1px 0 $secondaryBlack);
+
+      background: $primaryWhite;
+      text-align: right;
+      letter-spacing: -.1em;
+      text-transform: uppercase;
+    }
+
+    &__item__reset span {
+      width: auto;
+      transition: 0.3s;
     }
   }
 
   &__list__item__reset {
-    &:focus &__arrow {
+    @include flexCenter();
+    position: relative;
+
+    &:focus span,
+    &:hover span {
+      outline: none;
+      color: $accentColor;
+      background: $secondaryColor;
+    }
+
+    &:focus &__arrow,
+    &:hover &__arrow  {
       border: 4px solid $secondaryWhite;
       background: #29AAFD;
       transform: rotate(calc(360deg - 45deg));
     }
 
-    &:focus &__arrow::before {
+    &:focus &__arrow::before,
+    &:hover &__arrow::before  {
       border-left: 0px solid $primaryWhite;
       border-top: 0px solid transparent;
       border-bottom: 0px solid transparent;
@@ -37,11 +67,13 @@
   }
 
   &__list__item__reset__arrow {
-    position: relative;
+    display: inline-block;
+    position: absolute;
+    right: calc(100% + .2em);
     height: 40px;
     width: 40px;
 
-    border: 5px solid transparent;
+    border: .2em solid transparent;
     border-top-color: $primaryWhite;
     border-left-color: $primaryWhite;
     border-bottom-color: $primaryWhite;
@@ -54,29 +86,17 @@
     &::before {
       content: "";
       position: absolute;
-      top: -3px;
+      top: -0.1em;
       left: 80%;
       height: 0;
       width: 0;
       
-      border-left: 10px solid $primaryWhite;
-      border-top: 10px solid transparent;
-      border-bottom: 10px solid transparent;
+      border-left: .3em solid $primaryWhite;
+      border-top: .3em solid transparent;
+      border-bottom: .3em solid transparent;
       
       transform: rotate(45deg);
       transition: all .4s ease-in-out;
-    }
-
-    &:hover {
-      border: 4px solid $secondaryWhite;
-      background: #29AAFD;
-      transform: rotate(calc(360deg - 45deg));
-    }
-
-    &:hover::before {
-      border-left: 0px solid $primaryWhite;
-      border-top: 0px solid transparent;
-      border-bottom: 0px solid transparent;
     }
   }
 }

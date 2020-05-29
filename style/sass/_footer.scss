@@ -100,7 +100,9 @@
           position: absolute;
           bottom: 0;
           right: 3px;
+          transition: 0.3s;
 
+          &:hover,
           &:focus {
             outline: none;
             color: $accentColor;
@@ -112,6 +114,7 @@
             color: $secondaryBlack;
             display: inline-block;
             animation: blinkingArrow .5s ease-in infinite alternate;
+            transition: 0.3s;
           }
 
         }
