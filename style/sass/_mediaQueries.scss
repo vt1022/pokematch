@@ -22,10 +22,11 @@
 }
 
 @media (max-width: 695px) {
-  $squareCardSize: 100px;
+  $squareCardSize: 95px;
   
   .wrapper {
-    max-width: calc( #{$squareCardSize} * 4 + 80px );
+    max-width: 99%;
+    width: 99%;
   }
 
   .main {
@@ -47,12 +48,6 @@
 
 @media (max-width: 585px) {
   $squareCardSize: 85px;
-  
-  .wrapper {
-    max-width: calc( #{$squareCardSize} * 3 + 60px );
-    width: 99%;
-  }
-  
   .main {
     &__cards-container {
       padding: 10px;

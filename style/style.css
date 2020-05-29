@@ -456,6 +456,8 @@ a, p {
       flex-wrap: wrap;
   padding: 40px;
   border-radius: 10px;
+  margin: 0 auto;
+  width: auto;
 }
 
 .main__cards-container__inner {
@@ -719,7 +721,8 @@ a, p {
 
 @media (max-width: 695px) {
   .wrapper {
-    max-width: calc( 100px * 4 + 80px);
+    max-width: 99%;
+    width: 99%;
   }
   .main__cards-container {
     padding: 20px;
@@ -729,9 +732,9 @@ a, p {
   }
   .main__cards-container__card {
     -webkit-box-flex: 0;
-        -ms-flex: 0 1 100px;
-            flex: 0 1 100px;
-    height: 100px;
+        -ms-flex: 0 1 95px;
+            flex: 0 1 95px;
+    height: 95px;
   }
   .footer__landing__welcome p {
     font-size: 20px;
@@ -741,10 +744,6 @@ a, p {
 }
 
 @media (max-width: 585px) {
-  .wrapper {
-    max-width: calc( 85px * 3 + 60px);
-    width: 99%;
-  }
   .main__cards-container {
     padding: 10px;
   }
