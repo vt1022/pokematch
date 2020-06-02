@@ -61,7 +61,7 @@ memApp.resetTrackers = function() {
   this.clickedPokeName.length = 0;
   this.clickedCard.length = 0;
   this.matchedCards = 0;
-  $(".header__list__item__timer").empty();
+  $(".header__list__item__timer").css("color", "#2e2e2e").empty();
 }
 // -----------------
 // click on cards
@@ -163,12 +163,16 @@ memApp.init = function() {
       $(".header__list__item__timer").html(memApp.timerCount+'s');
       memApp.timerCount--;
 
+      if (memApp.timerCount === 10) {
+        $(".header__list__item__timer").css("color", "#DC0A2D");
+      }
+      
       if (memApp.timerCount > 0) {
         $(".header__list__item__timer").html(memApp.timerCount+'s');
         
       } else if (memApp.timerCount <= 0) {
         const lostHtml = `
-        You ran OUT of TIME! Better luck NEXT time. CLICK start to try again!
+        You ran OUT of TIME! But you matched <span class="matched-amount">${memApp.matchedCards}/20</span> cards. Better luck NEXT time. CLICK start to try again!
         <button class="footer__landing__welcome__button"><span>&#9654</span>START</button>`;
         
         $(".footer__landing__welcome p").html(lostHtml);

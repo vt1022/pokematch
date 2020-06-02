@@ -2,7 +2,6 @@
 // will start doing this in the next project.
 @media (max-width: 870px) {
   $squareCardSize: 120px;
-
   .wrapper {
     max-width: calc( #{$squareCardSize} * 4 + 120px );
     width: 90%;
@@ -16,13 +15,17 @@
     &__cards-container__card {
       flex: 0 1 $squareCardSize;
       height: $squareCardSize;
+        
+      &:hover,
+      &:focus-within {
+        filter: drop-shadow(-2em 1em 1em rgba(12, 10, 10, 0.8));
+      }
     }
   }
 }
 
 @media (max-width: 695px) {
   $squareCardSize: 95px;
-  
   .wrapper {
     width: 100%;
   }
@@ -46,13 +49,15 @@
       }
     }
   }
-  
 
   .main {
-    &__cards-container {
-      &__card {
+    &__cards-container__card {
         flex: 0 1 $squareCardSize;
         height: $squareCardSize;
+
+      &:hover,
+      &:focus-within {
+        filter: drop-shadow(-1em .5em 1em rgba(12, 10, 10, 0.8));
       }
     }
   }
@@ -138,10 +143,15 @@
 @media (max-width: 400px) {
   $squareCardSize: 70px;
   .main {
-    &__cards-container {
-      &__card {
-        flex: 0 1 $squareCardSize;
-        height: $squareCardSize;
+    &__cards-container__card {
+      flex: 0 1 $squareCardSize;
+      height: $squareCardSize;
+
+      &:hover,
+      &:focus-within {
+        transform: translate(4px, -4px) rotateY(15deg);
+        filter: drop-shadow(-1em .2em 1em rgba(12, 10, 10, 0.8));
+        z-index: 2;
       }
     }
   }
